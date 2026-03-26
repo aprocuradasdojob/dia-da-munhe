@@ -1,141 +1,202 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>8 de Março – Mulheres que movem o mundo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    :root{
-      --roxo: #5B2C6F;
-      --verde: #008000;
-      --cinza-claro: #f5f5f5;
-      --texto: #222;
-    }
-    *{box-sizing:border-box; margin:0; padding:0; font-family: system-ui,Arial;}
-    body{background:var(--cinza-claro); color:var(--texto); line-height:1.6;}
-    header{
-      background:url('https://images.unsplash.com/photo-1500644489640-5e84a6b8d712?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      height:60vh; position:relative; display:flex; align-items:center; justify-content:center; text-align:center;
-    }
-    header::after{content:''; position:absolute; inset:0; background:rgba(0,0,0,.45);}
-    .hero-txt{position:relative; z-index:2; color:#fff; max-width:700px; padding:1rem;}
-    .hero-txt h1{font-size:2.2rem; margin-bottom:.5rem;}
-    .btn{
-      display:inline-block; margin-top:1rem; background:var(--verde); color:#fff; padding:.8rem 1.4rem; border:none; cursor:pointer; text-decoration:none; border-radius:4px;
-    }
-    section{padding:2.5rem 1rem; max-width:1000px; margin:auto;}
-    h2{margin-bottom:1rem; color:var(--roxo);}
-    .cards{display:grid; gap:1.2rem; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));}
-    .card{background:#fff; padding:1.2rem; border-left:5px solid var(--verde); box-shadow:0 2px 6px rgba(0,0,0,.08);}
-    .card h3{margin-bottom:.5rem; color:var(--roxo);}
-    .galeria{display:flex; flex-wrap:wrap; gap:1rem;}
-    .mini{
-      background:#fff; padding:1rem; flex:1 1 220px; box-shadow:0 2px 5px rgba(0,0,0,.07);
-    }
-    footer{background:var(--roxo); color:#fff; text-align:center; padding:2rem 1rem; margin-top:2rem;}
-    footer a{color:#fff; text-decoration:underline;}
-    @media(min-width:600px){
-      .hero-txt h1{font-size:3rem;}
-    }
-  </style>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 de Março – Mulheres que movem o mundo</title>
+    <style>
+        :root {
+            --roxo: #5B2C6F;
+            --verde: #008000;
+            --branco: #FFFFFF;
+            --preto: #1A1A1A;
+            --cinza-claro: #F4F4F4;
+        }
 
-<body>
-  <header>
-    <div class="hero-txt">
-      <h1>8 de Março – Dia Internacional da Mulher</h1>
-      <p>Celebre, conheça, agua.</p>
-      <a href="#historia" class="btn">Conheça 8 mulheres que mudaram a história sem usar armas</a>
-    </div>
-  </header>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-  <section id="historia">
-    <h2>Por que 8 de Março?</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>1857 – Faísca</h3>
-        Operárias têxteis de Nova York entram em greve por 12 h/dia e salário igual; 129 morrem carbonizadas. O episódio virou símbolo.
-      </div>
-      <div class="card">
-        <h3>1910 – Clara Zetkin</h3>
-        Propõe data internacional em conferência socialista; 100 mulheres de 17 países aprovam por unanimidade.
-      </div>
-      <div class="card">
-        <h3>1975 – ONU</h3>
-        A Organização das Nações Unidas oficializa 8 de março como o “Dia Internacional da Mulher”.
-      </div>
-      <div class="card">
-        <h3>2015 – Brasil</h3>
-        Blumenau/SC vira primeira cidade do país a declarar feriado municipal no 8 de Março.
-      </div>
-    </div>
-  </section>
+        body {
+            line-height: 1.6;
+            color: var(--preto);
+            background-color: var(--branco);
+        }
 
-  <section>
-    <h2>Dados que ninguém te conta (2026)</h2>
-    <ul>
-      <li>Mulheres no Brasil ganham, em média, <strong>79 %</strong> do salário masculino; se forem negras, <strong>58 %</strong>.</li>
-      <li>Somente <strong>11 %</strong> das empresas listadas na B3 têm CEO mulher.</li>
-      <li><strong>5 %</strong> das trabalhadoras doméstedicas já foram demitidas por pedir folga por cólica (DIEESE, 2023).</li>
-      <li>Cada violência: <strong>1 agressão sexual a cada 3 minutos</strong> (Conselho Nacional de Justiça).</li>
-    </ul>
-  </section>
+        /* Acessibilidade e Contraste */
+        a:focus, button:focus {
+            outline: 3px solid var(--verde);
+            outline-offset: 2px;
+        }
 
-  <section>
-    <h2>Galeria – Você não viu isso no colégio</h2>
-    <div class="galeria">
-      <div class="mini"><strong>Carolina Maria de Jesus</strong><br>Catadora que escreveu “Quarto de Despejo” num caderno; virou bestseller global em 1960.</div>
-      <div class="mini"><strong>Hebe Camargo</strong><br>Antes de Silvio, foi a primeira pessoa com programa diário na TV – 1955.</div>
-      <div class="mini"><strong>Maria Quitéria</strong><br>Combater na Independência disfarçada de homem; descoberta em 1823.</div>
-      <div class="mini"><strong>Eliana Calmon</strong><br>Primeira ministra a mandar prender juiz por corrupção – 2006.</div>
-      <div class="mini"><strong>Dandara dos Palmares</strong><br>Liderou 11 mil quilombas; decapitada aos 18 anos em 1694.</div>
-      <div class="mini"><strong>Jaqueline Góes de Jesus</strong><br>Sequenciou genoma do Zika em <strong>48 h</strong> – 2016.</div>
-      <div class="mini"><strong>Lya Luft</strong><br>56 livros, tradutora de Clarice, sem diploma universitário.</div>
-      <div class="mini"><strong>Tereza Campello</strong><br>Enfermeira que criou o Mais Médicos antes de ser ministra da Saúde.</div>
-    </div>
-  </section>
+        /* Header & Hero */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(91, 44, 111, 0.7), rgba(0, 128, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--branco);
+            padding: 2rem;
+        }
 
-  <section>
-    <h2>O que você pode fazer hoje (sem sair de casa)</h2>
-    <ul>
-      <li>Troque <strong>5 perfis</strong> masculinos por mulheres da mesma área no feed – leva 3 min.</li>
-      <li>Envie <strong>R$ 8,00</strong> via Pix para mulher em situação de rua (<em>ex: chave @mariasemteto</em>).</li>
-      <li>Dê <strong>3 elogios públicos</strong> no LinkedIn a colegas mulheres – aumenta chance de promoção delas em 26 %.</li>
-      <li>Marque “pausa 15h” no calendário; respire 4-7-8 por 2 min – reduz ansiedade em 12 % em 7 dias (USP).</li>
-    </ul>
-  </section>
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
 
-  <section>
-    <h2>Arte & Download gratuito</h2>
-    <p>
-      <a href="#" class="btn" download>Adesivos WhatsApp (8 frases)</a>
-      <a href="#" class="btn" download>Papel de parede 4K</a>
-    </p>
-    <iframe src="https://open.spotify.com/embed/playlist/5X4V1l1ZQVQYJtQG6" width="100%" height="80" allow="encrypted-media"></iframe>
-  </section>
+        .btn-cta {
+            background-color: var(--verde);
+            color: var(--branco);
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.3s;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
 
-  <footer>
-    <h3>Newsletter “Papo de 8”</h3>
-    <p>3 min de dados + 1 mulher pra seguir. <a href="#">Cadastre-se grátis</a>.</p>
-    <p>Hashtags prontas: #829PorCentro #MulherRealTemVoz</p>
-    <small>Fontes: IBGE, CNJ, DIEESE, ONU Mulheres – dados mar/2026.</small><br>
-    <small>Site aberto em <a href="https://github.com/seuuser/8demarco" target="_blank">GitHub</a></small>
-  </footer>
+        .btn-cta:hover {
+            background-color: #006400;
+            transform: scale(1.05);
+        }
 
-  <script>
-    //Scroll suave pro botão
-    document.querySelector('a[href="#historia"]').addEventun listener('click', e => {
-      e.preventDefault();
-      document.querySelector('#historia').scrollIntoView({behavior:'smooth'});
-    });
-    //Pequena animação nos cards
-    const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.style.opacity = '1';
-      });
-    }, {threshold:0.25});
-    cards.forEach(c => { c.style.opacity = '0'; c.style.transition = 'opacity .6s'; observer.observe(c); });
-  </script>
-</body>
-</html>
+        /* Seções Gerais */
+        section {
+            padding: 4rem 10%;
+        }
+
+        h2 {
+            color: var(--roxo);
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            border-left: 8px solid var(--verde);
+            padding-left: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: var(--cinza-claro);
+            padding: 2rem;
+            border-bottom: 5px solid var(--roxo);
+        }
+
+        .event-year {
+            font-weight: 900;
+            color: var(--verde);
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        /* Dados */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            background: var(--roxo);
+            color: var(--branco);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Galeria */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-card {
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .profile-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--roxo);
+        }
+
+        .profile-card h3 {
+            color: var(--roxo);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Ação */
+        .actions-list {
+            list-style: none;
+        }
+
+        .action-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .action-icon {
+            background: var(--verde);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        /* Download Section */
+        .art-section {
+            background: var(--cinza-claro);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .download-btn {
+            background: var(--roxo);
+            color: white;
+            padding: 1rem;
+            display: block;
+            text-decoration: none;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--preto);
+            color: var(--branco);
+            padding: 3rem 10%;
+        }
+
+        .newsletter input {
+            padding: 0.8rem;
+            width: 100%;
+            max-width: 300px;
