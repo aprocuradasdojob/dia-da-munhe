@@ -1,270 +1,141 @@
-import React, { useState } from 'react';
-import { Heart, Calendar, Globe, Award, ArrowRight, Menu, X, ChevronRight } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>8 de Março – Mulheres que movem o mundo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --roxo: #5B2C6F;
+      --verde: #008000;
+      --cinza-claro: #f5f5f5;
+      --texto: #222;
+    }
+    *{box-sizing:border-box; margin:0; padding:0; font-family: system-ui,Arial;}
+    body{background:var(--cinza-claro); color:var(--texto); line-height:1.6;}
+    header{
+      background:url('https://images.unsplash.com/photo-1500644489640-5e84a6b8d712?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      height:60vh; position:relative; display:flex; align-items:center; justify-content:center; text-align:center;
+    }
+    header::after{content:''; position:absolute; inset:0; background:rgba(0,0,0,.45);}
+    .hero-txt{position:relative; z-index:2; color:#fff; max-width:700px; padding:1rem;}
+    .hero-txt h1{font-size:2.2rem; margin-bottom:.5rem;}
+    .btn{
+      display:inline-block; margin-top:1rem; background:var(--verde); color:#fff; padding:.8rem 1.4rem; border:none; cursor:pointer; text-decoration:none; border-radius:4px;
+    }
+    section{padding:2.5rem 1rem; max-width:1000px; margin:auto;}
+    h2{margin-bottom:1rem; color:var(--roxo);}
+    .cards{display:grid; gap:1.2rem; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));}
+    .card{background:#fff; padding:1.2rem; border-left:5px solid var(--verde); box-shadow:0 2px 6px rgba(0,0,0,.08);}
+    .card h3{margin-bottom:.5rem; color:var(--roxo);}
+    .galeria{display:flex; flex-wrap:wrap; gap:1rem;}
+    .mini{
+      background:#fff; padding:1rem; flex:1 1 220px; box-shadow:0 2px 5px rgba(0,0,0,.07);
+    }
+    footer{background:var(--roxo); color:#fff; text-align:center; padding:2rem 1rem; margin-top:2rem;}
+    footer a{color:#fff; text-decoration:underline;}
+    @media(min-width:600px){
+      .hero-txt h1{font-size:3rem;}
+    }
+  </style>
+</head>
 
-// Dados das mulheres inspiradoras
-const INSPIRING_WOMEN = [
-  {
-    name: "Marie Curie",
-    role: "Cientista",
-    description: "Primeira mulher a ganhar um Prémio Nobel e a única pessoa a ganhá-lo em duas áreas científicas diferentes (Física e Química).",
-    image: "https://images.unsplash.com/photo-1531256379416-9f000e90aacc?auto=format&fit=crop&q=80&w=400&h=400"
-  },
-  {
-    name: "Carolina Beatriz Ângelo",
-    role: "Médica e Sufragista",
-    description: "A primeira mulher a votar em Portugal, em 1911, aproveitando uma lacuna na lei que permitia o voto a 'chefes de família'.",
-    image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=400&h=400"
-  },
-  {
-    name: "Malala Yousafzai",
-    role: "Ativista",
-    description: "A mais jovem vencedora do Prémio Nobel da Paz, conhecida pela sua defesa dos direitos humanos e da educação das raparigas.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400&h=400"
-  },
-  {
-    name: "Frida Kahlo",
-    role: "Artista",
-    description: "Pintora mexicana conhecida pelos seus muitos retratos, autorretratos e obras inspiradas na natureza e em artefactos do México.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400&h=400"
-  }
-];
-
-// Estatísticas
-const STATS = [
-  { icon: Globe, value: "8 de Março", label: "Dia Internacional" },
-  { icon: Award, value: "1911", label: "Primeira Celebração" },
-  { icon: Heart, value: "Infinita", label: "Força e Resiliência" }
-];
-
-export default function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
-      
-      {/* Navegação */}
-      <nav className="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <Heart className="h-6 w-6 text-purple-600 fill-purple-600" />
-              <span className="font-bold text-xl tracking-tight text-purple-900">DiaDasMulheres</span>
-            </div>
-            
-            {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
-              <a href="#inicio" className="text-slate-600 hover:text-purple-600 font-medium transition-colors">Início</a>
-              <a href="#historia" className="text-slate-600 hover:text-purple-600 font-medium transition-colors">História</a>
-              <a href="#inspiracao" className="text-slate-600 hover:text-purple-600 font-medium transition-colors">Inspiração</a>
-              <a href="#envolver" className="text-slate-600 hover:text-purple-600 font-medium transition-colors">Envolver</a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
-              <button 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-slate-600 hover:text-purple-600 focus:outline-none"
-              >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-slate-100">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#inicio" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-purple-600 hover:bg-purple-50">Início</a>
-              <a href="#historia" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-purple-600 hover:bg-purple-50">História</a>
-              <a href="#inspiracao" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-purple-600 hover:bg-purple-50">Inspiração</a>
-              <a href="#envolver" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-purple-600 hover:bg-purple-50">Envolver</a>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Hero Section */}
-      <section id="inicio" className="pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
-            <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium text-sm mb-6">
-                <Calendar className="w-4 h-4 mr-2" />
-                8 de Março - Dia Internacional da Mulher
-              </div>
-              <h1 className="text-4xl tracking-tight font-extrabold text-slate-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-                <span className="block xl:inline">Celebrando a força, a</span>{' '}
-                <span className="block text-purple-600 xl:inline">coragem e a resiliência</span>
-              </h1>
-              <p className="mt-3 text-base text-slate-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Um dia para honrar as conquistas das mulheres ao longo da história e em todo o mundo. Juntos, continuamos a marchar em direção à igualdade de género, empoderamento e um futuro sem barreiras.
-              </p>
-              <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
-                <a href="#inspiracao" className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-purple-600 hover:bg-purple-700 transition-colors shadow-lg hover:shadow-xl md:py-4 md:text-lg md:px-10">
-                  Conhecer Histórias
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </a>
-              </div>
-            </div>
-            <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-              <div className="relative mx-auto w-full rounded-2xl shadow-2xl lg:max-w-md overflow-hidden">
-                <img
-                  className="w-full h-auto object-cover"
-                  src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=800&h=600"
-                  alt="Grupo de mulheres diversas a sorrir"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-transparent mix-blend-multiply"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-purple-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            {STATS.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center justify-center p-6 bg-purple-800/50 rounded-2xl backdrop-blur-sm border border-purple-700/50">
-                <stat.icon className="w-10 h-10 mb-4 text-purple-300" />
-                <span className="text-3xl font-bold mb-1">{stat.value}</span>
-                <span className="text-purple-200">{stat.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* History Section */}
-      <section id="historia" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-              A Origem do 8 de Março
-            </h2>
-            <div className="mt-4 w-24 h-1 bg-purple-600 mx-auto rounded-full"></div>
-            <p className="mt-6 text-lg text-slate-500">
-              O Dia Internacional da Mulher não foi criado por uma única pessoa ou organização, mas nasceu dos movimentos laborais na viragem do século XX na América do Norte e na Europa.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
-              <ul className="space-y-8">
-                <li className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold">1908</div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">Marcha em Nova Iorque</h3>
-                    <p className="text-slate-600">15.000 mulheres marcharam pela cidade de Nova Iorque exigindo jornadas de trabalho mais curtas, melhores salários e o direito de voto.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold">1910</div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">A Proposta de Clara Zetkin</h3>
-                    <p className="text-slate-600">Na Conferência Internacional de Mulheres Trabalhadoras em Copenhaga, Clara Zetkin sugeriu um dia internacional para pressionar pelas suas exigências.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold">1975</div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">Reconhecimento da ONU</h3>
-                    <p className="text-slate-600">As Nações Unidas começaram a celebrar o Dia Internacional da Mulher a 8 de março, tornando-o numa data globalmente reconhecida.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="order-1 md:order-2">
-              <img 
-                src="https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?auto=format&fit=crop&q=80&w=800&h=1000" 
-                alt="Manifestação histórica" 
-                className="rounded-2xl shadow-xl w-full object-cover h-[500px]"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Inspiring Women Section */}
-      <section id="inspiracao" className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-              Mulheres que Mudaram o Mundo
-            </h2>
-            <div className="mt-4 w-24 h-1 bg-purple-600 mx-auto rounded-full"></div>
-            <p className="mt-6 text-lg text-slate-500">
-              Ao longo da história, inúmeras mulheres quebraram barreiras, desafiaram o status quo e pavimentaram o caminho para as gerações futuras.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {INSPIRING_WOMEN.map((woman, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={woman.image} 
-                    alt={woman.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => { e.target.src = 'https://via.placeholder.com/400x400?text=Retrato' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <div className="text-sm font-semibold text-purple-600 mb-1">{woman.role}</div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{woman.name}</h3>
-                  <p className="text-slate-600 text-sm line-clamp-4">{woman.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section id="envolver" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl mb-6">
-            O Trabalho Ainda Não Terminou
-          </h2>
-          <p className="text-xl text-slate-600 mb-10">
-            Apesar dos grandes progressos, a igualdade de género ainda não foi totalmente alcançada. Cada um de nós pode fazer a diferença na sua comunidade, local de trabalho e em casa.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="px-8 py-4 bg-purple-600 text-white font-semibold rounded-full hover:bg-purple-700 transition-colors shadow-lg flex items-center justify-center">
-              Apoiar Causas Locais
-              <ChevronRight className="ml-2 w-5 h-5" />
-            </button>
-            <button className="px-8 py-4 bg-white text-purple-600 border-2 border-purple-600 font-semibold rounded-full hover:bg-purple-50 transition-colors flex items-center justify-center">
-              Ler mais sobre Igualdade
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-2 mb-4 md:mb-0">
-              <Heart className="h-6 w-6 text-purple-500 fill-purple-500" />
-              <span className="font-bold text-xl tracking-tight text-white">DiaDasMulheres</span>
-            </div>
-            
-            <div className="flex space-x-6">
-              <a href="#" className="hover:text-purple-400 transition-colors">Sobre Nós</a>
-              <a href="#" className="hover:text-purple-400 transition-colors">Recursos</a>
-              <a href="#" className="hover:text-purple-400 transition-colors">Contacto</a>
-            </div>
-          </div>
-          
-          <div className="mt-8 pt-8 border-t border-slate-800 text-sm text-center md:text-left flex flex-col md:flex-row justify-between">
-            <p>&copy; 2026 Dia Internacional da Mulher. Todos os direitos reservados.</p>
-            <p className="mt-2 md:mt-0">Criado com <Heart className="inline w-4 h-4 text-red-500 mx-1" /> para celebrar a igualdade.</p>
-          </div>
-        </div>
-      </footer>
+<body>
+  <header>
+    <div class="hero-txt">
+      <h1>8 de Março – Dia Internacional da Mulher</h1>
+      <p>Celebre, conheça, agua.</p>
+      <a href="#historia" class="btn">Conheça 8 mulheres que mudaram a história sem usar armas</a>
     </div>
-  );
-}
+  </header>
+
+  <section id="historia">
+    <h2>Por que 8 de Março?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>1857 – Faísca</h3>
+        Operárias têxteis de Nova York entram em greve por 12 h/dia e salário igual; 129 morrem carbonizadas. O episódio virou símbolo.
+      </div>
+      <div class="card">
+        <h3>1910 – Clara Zetkin</h3>
+        Propõe data internacional em conferência socialista; 100 mulheres de 17 países aprovam por unanimidade.
+      </div>
+      <div class="card">
+        <h3>1975 – ONU</h3>
+        A Organização das Nações Unidas oficializa 8 de março como o “Dia Internacional da Mulher”.
+      </div>
+      <div class="card">
+        <h3>2015 – Brasil</h3>
+        Blumenau/SC vira primeira cidade do país a declarar feriado municipal no 8 de Março.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Dados que ninguém te conta (2026)</h2>
+    <ul>
+      <li>Mulheres no Brasil ganham, em média, <strong>79 %</strong> do salário masculino; se forem negras, <strong>58 %</strong>.</li>
+      <li>Somente <strong>11 %</strong> das empresas listadas na B3 têm CEO mulher.</li>
+      <li><strong>5 %</strong> das trabalhadoras doméstedicas já foram demitidas por pedir folga por cólica (DIEESE, 2023).</li>
+      <li>Cada violência: <strong>1 agressão sexual a cada 3 minutos</strong> (Conselho Nacional de Justiça).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Galeria – Você não viu isso no colégio</h2>
+    <div class="galeria">
+      <div class="mini"><strong>Carolina Maria de Jesus</strong><br>Catadora que escreveu “Quarto de Despejo” num caderno; virou bestseller global em 1960.</div>
+      <div class="mini"><strong>Hebe Camargo</strong><br>Antes de Silvio, foi a primeira pessoa com programa diário na TV – 1955.</div>
+      <div class="mini"><strong>Maria Quitéria</strong><br>Combater na Independência disfarçada de homem; descoberta em 1823.</div>
+      <div class="mini"><strong>Eliana Calmon</strong><br>Primeira ministra a mandar prender juiz por corrupção – 2006.</div>
+      <div class="mini"><strong>Dandara dos Palmares</strong><br>Liderou 11 mil quilombas; decapitada aos 18 anos em 1694.</div>
+      <div class="mini"><strong>Jaqueline Góes de Jesus</strong><br>Sequenciou genoma do Zika em <strong>48 h</strong> – 2016.</div>
+      <div class="mini"><strong>Lya Luft</strong><br>56 livros, tradutora de Clarice, sem diploma universitário.</div>
+      <div class="mini"><strong>Tereza Campello</strong><br>Enfermeira que criou o Mais Médicos antes de ser ministra da Saúde.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que você pode fazer hoje (sem sair de casa)</h2>
+    <ul>
+      <li>Troque <strong>5 perfis</strong> masculinos por mulheres da mesma área no feed – leva 3 min.</li>
+      <li>Envie <strong>R$ 8,00</strong> via Pix para mulher em situação de rua (<em>ex: chave @mariasemteto</em>).</li>
+      <li>Dê <strong>3 elogios públicos</strong> no LinkedIn a colegas mulheres – aumenta chance de promoção delas em 26 %.</li>
+      <li>Marque “pausa 15h” no calendário; respire 4-7-8 por 2 min – reduz ansiedade em 12 % em 7 dias (USP).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Arte & Download gratuito</h2>
+    <p>
+      <a href="#" class="btn" download>Adesivos WhatsApp (8 frases)</a>
+      <a href="#" class="btn" download>Papel de parede 4K</a>
+    </p>
+    <iframe src="https://open.spotify.com/embed/playlist/5X4V1l1ZQVQYJtQG6" width="100%" height="80" allow="encrypted-media"></iframe>
+  </section>
+
+  <footer>
+    <h3>Newsletter “Papo de 8”</h3>
+    <p>3 min de dados + 1 mulher pra seguir. <a href="#">Cadastre-se grátis</a>.</p>
+    <p>Hashtags prontas: #829PorCentro #MulherRealTemVoz</p>
+    <small>Fontes: IBGE, CNJ, DIEESE, ONU Mulheres – dados mar/2026.</small><br>
+    <small>Site aberto em <a href="https://github.com/seuuser/8demarco" target="_blank">GitHub</a></small>
+  </footer>
+
+  <script>
+    //Scroll suave pro botão
+    document.querySelector('a[href="#historia"]').addEventun listener('click', e => {
+      e.preventDefault();
+      document.querySelector('#historia').scrollIntoView({behavior:'smooth'});
+    });
+    //Pequena animação nos cards
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.style.opacity = '1';
+      });
+    }, {threshold:0.25});
+    cards.forEach(c => { c.style.opacity = '0'; c.style.transition = 'opacity .6s'; observer.observe(c); });
+  </script>
+</body>
+</html>
